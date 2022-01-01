@@ -4,12 +4,14 @@ import (
 	"bufio"
 	"encoding/json"
 	"hash/fnv"
+	"io"
 	"io/ioutil"
 	"log"
 	"os"
 	"path"
 	"runtime"
 	"strconv"
+	"strings"
 	"sync"
 )
 
@@ -90,7 +92,6 @@ func (c *MRCluster) worker() {
 				if err != nil {
 					panic(err)
 				}
-
 				fs := make([]*os.File, t.nReduce)
 				bs := make([]*bufio.Writer, t.nReduce)
 				for i := range fs {
@@ -112,7 +113,32 @@ func (c *MRCluster) worker() {
 				// hint: don't encode results returned by ReduceF, and just output
 				// them into the destination file directly so that users can get
 				// results formatted as what they want.
-				panic("YOUR CODE HERE")
+				var kv KeyValue
+				kvMap := make(map[string][]string)
+				for i := 0; i < t.nMap; i++ {
+					rpath := reduceName(t.dataDir, t.jobName, i, t.taskNumber)
+					_, rs := OpenFileAndBuf(rpath)
+					for {
+						line, err := rs.ReadString('\n')
+						if err != nil || io.EOF == err {
+							if line == "" {
+								break
+							}
+						}
+						err = json.NewDecoder(strings.NewReader(line)).Decode(&kv)
+						if err != nil || (kv.Key == "" && kv.Value == "") {
+							continue
+						}
+						kvMap[kv.Key] = append(kvMap[kv.Key], kv.Value)
+					}
+				}
+				rpath := mergeName(t.dataDir, t.jobName, t.taskNumber)
+				fs, bs := CreateFileAndBuf(rpath)
+				for k, v := range kvMap {
+					result := t.reduceF(k, v)
+					WriteToBuf(bs, result)
+				}
+				SafeClose(fs, bs)
 			}
 			t.wg.Done()
 		case <-c.exit:
@@ -159,7 +185,27 @@ func (c *MRCluster) run(jobName, dataDir string, mapF MapF, reduceF ReduceF, map
 
 	// reduce phase
 	// YOUR CODE HERE :D
-	panic("YOUR CODE HERE")
+	tasks = make([]*task, 0, nReduce)
+	var paths []string
+	for i := 0; i < nReduce; i++ {
+		t := &task{
+			dataDir:    dataDir,
+			jobName:    jobName,
+			phase:      reducePhase,
+			taskNumber: i,
+			nReduce:    nReduce,
+			nMap:       nMap,
+			reduceF:    reduceF,
+		}
+		paths = append(paths, mergeName(dataDir, jobName, i))
+		t.wg.Add(1)
+		tasks = append(tasks, t)
+		go func() { c.taskCh <- t }()
+	}
+	for _, t := range tasks {
+		t.wg.Wait()
+	}
+	notify <- paths
 }
 
 func ihash(s string) int {

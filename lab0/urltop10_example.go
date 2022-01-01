@@ -77,7 +77,10 @@ func ExampleURLTop10Reduce(key string, values []string) string {
 	us, cs := TopN(cnts, 10)
 	buf := new(bytes.Buffer)
 	for i := range us {
-		fmt.Fprintf(buf, "%s: %d\n", us[i], cs[i])
+		_, err := fmt.Fprintf(buf, "%s: %d\n", us[i], cs[i])
+		if err != nil {
+			panic(err)
+		}
 	}
 	return buf.String()
 }

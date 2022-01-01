@@ -1,0 +1,78 @@
+GOROOT=D:\Go #gosetup
+GOPATH=C:\Users\21548\go #gosetup
+D:\Go\bin\go.exe test -c -o C:\Users\21548\AppData\Local\Temp\GoLand\___1TestExampleURLTop_in_talent.test.exe talent #gosetup
+D:\Go\bin\go.exe tool test2json -t C:\Users\21548\AppData\Local\Temp\GoLand\___1TestExampleURLTop_in_talent.test.exe -test.v -test.paniconexit0 -test.run ^\QTestExampleURLTop\E$ #gosetup
+=== RUN   TestExampleURLTop
+Case0 PASS, dataSize=1MB, nMapFiles=5, cost=81.1733ms
+Case1 PASS, dataSize=1MB, nMapFiles=5, cost=48.2603ms
+Case2 PASS, dataSize=1MB, nMapFiles=5, cost=44.3519ms
+Case3 PASS, dataSize=1MB, nMapFiles=5, cost=59.5111ms
+Case4 PASS, dataSize=1MB, nMapFiles=5, cost=99.0582ms
+Case5 PASS, dataSize=1MB, nMapFiles=5, cost=62.4946ms
+Case6 PASS, dataSize=1MB, nMapFiles=5, cost=60.0517ms
+Case7 PASS, dataSize=1MB, nMapFiles=5, cost=57.4235ms
+Case8 PASS, dataSize=1MB, nMapFiles=5, cost=56.3631ms
+Case9 PASS, dataSize=1MB, nMapFiles=5, cost=51.3596ms
+Case10 PASS, dataSize=1MB, nMapFiles=5, cost=48.1442ms
+Case0 PASS, dataSize=10MB, nMapFiles=10, cost=527.9823ms
+Case1 PASS, dataSize=10MB, nMapFiles=10, cost=314.5944ms
+Case2 PASS, dataSize=10MB, nMapFiles=10, cost=264.7208ms
+Case3 PASS, dataSize=10MB, nMapFiles=10, cost=273.6066ms
+Case4 PASS, dataSize=10MB, nMapFiles=10, cost=905.9307ms
+Case5 PASS, dataSize=10MB, nMapFiles=10, cost=513.0212ms
+Case6 PASS, dataSize=10MB, nMapFiles=10, cost=474.1887ms
+Case7 PASS, dataSize=10MB, nMapFiles=10, cost=474.4763ms
+Case8 PASS, dataSize=10MB, nMapFiles=10, cost=376.544ms
+Case9 PASS, dataSize=10MB, nMapFiles=10, cost=329.3228ms
+Case10 PASS, dataSize=10MB, nMapFiles=10, cost=318.526ms
+Case0 PASS, dataSize=100MB, nMapFiles=20, cost=4.9521303s
+
+Case1 PASS, dataSize=100MB, nMapFiles=20, cost=2.5261282s
+
+Case2 PASS, dataSize=100MB, nMapFiles=20, cost=2.1040925s
+
+Case3 PASS, dataSize=100MB, nMapFiles=20, cost=2.095778s
+Case4 PASS, dataSize=100MB, nMapFiles=20, cost=5.2300641s
+
+Case5 PASS, dataSize=100MB, nMapFiles=20, cost=4.6921041s
+
+Case6 PASS, dataSize=100MB, nMapFiles=20, cost=4.3972696s
+
+Case7 PASS, dataSize=100MB, nMapFiles=20, cost=4.3584802s
+
+Case8 PASS, dataSize=100MB, nMapFiles=20, cost=3.102797s
+Case9 PASS, dataSize=100MB, nMapFiles=20, cost=2.7494778s
+
+Case10 PASS, dataSize=100MB, nMapFiles=20, cost=2.3860267s
+Case0 PASS, dataSize=500MB, nMapFiles=40, cost=27.5172799s
+Case1 PASS, dataSize=500MB, nMapFiles=40, cost=15.922108s
+
+Case2 PASS, dataSize=500MB, nMapFiles=40, cost=13.7913803s
+Case3 PASS, dataSize=500MB, nMapFiles=40, cost=19.7488019s
+Case4 PASS, dataSize=500MB, nMapFiles=40, cost=23.3272519s
+Case5 PASS, dataSize=500MB, nMapFiles=40, cost=35.0336045s
+Case6 PASS, dataSize=500MB, nMapFiles=40, cost=25.4201325s
+
+Case7 PASS, dataSize=500MB, nMapFiles=40, cost=24.4332395s
+Case8 PASS, dataSize=500MB, nMapFiles=40, cost=17.3670169s
+Case9 PASS, dataSize=500MB, nMapFiles=40, cost=14.4212271s
+Case10 PASS, dataSize=500MB, nMapFiles=40, cost=14.5362862s
+Case0 PASS, dataSize=1GB, nMapFiles=60, cost=1m9.0109081s
+
+Case1 PASS, dataSize=1GB, nMapFiles=60, cost=25.7614572s
+Case2 PASS, dataSize=1GB, nMapFiles=60, cost=27.7958245s
+Case3 PASS, dataSize=1GB, nMapFiles=60, cost=38.4579166s
+Case4 PASS, dataSize=1GB, nMapFiles=60, cost=54.750421s
+Case5 PASS, dataSize=1GB, nMapFiles=60, cost=1m31.8466045s
+
+Case6 PASS, dataSize=1GB, nMapFiles=60, cost=1m15.448699s
+
+Case7 PASS, dataSize=1GB, nMapFiles=60, cost=1m15.2695289s
+Case8 PASS, dataSize=1GB, nMapFiles=60, cost=33.4810493s
+Case9 PASS, dataSize=1GB, nMapFiles=60, cost=27.411196s
+Case10 PASS, dataSize=1GB, nMapFiles=60, cost=23.590151s
+--- PASS: TestExampleURLTop (899.34s)
+PASS
+
+
+Process finished with the exit code 0
